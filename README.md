@@ -1,37 +1,32 @@
-# Integrate Adjemin Gateway SDK
+# Integrate Payment Gateway SDK
 
-Gateway sdk to allow payment and transfer in Adjemin app
+Gateway sdk to allow payment and transfer in Donypay app
 
-<img src="https://github.com/adjemin/gateway_flutter_sdk/blob/81b900f5e1053607795720f2df70c3729ee4e1b5/picture/payment.png" alt="screenshot"/>
+<img src="https://github.com/DonypayLab/payment_gateway_flutter/blob/205db8b5fddd97985afa8e8641f1f225548b6ba2/picture/payment.png" alt="screenshot"/>
 
 ## 1. Add the package to your project
-Add the adjemin_gateway_sdk package as a dependancy in your `pubspec.yaml` file.
+Add the payment_gateway_flutter package as a dependancy in your `pubspec.yaml` file.
 
 ```yaml
     dependencies:
     flutter:
         sdk: flutter
-    adjemin_gateway_sdk:
+    payment_gateway_flutter:
       git:
-        url: https://github.com/adjemin/gateway_flutter_sdk.git
+        url: https://github.com/DonypayLab/payment_gateway_flutter.git
         ref: main
 ```
 ## 3. How to use
 You must use `OperatorPickerWidget`
 ```dart
 OperatorPickerWidget(
-    baseUrl: 'https://api.adjem.in',
+    baseUrl: 'https://api.donypay.com',
     clientId: 'CLIENT_ID',
     clientSecret: 'CLIENT_SECRET',
-    sellerUsername: 'SELLER_USERNAME',
-    paymentType: 'gateway',
     title: 'Payer une commande',
     description: 'Payer une commande',
     amount: 100,
     merchantTransactionId: uuid.v4(),
-    webhookUrl:"https://your-webhook-url/v1/customers/payments/callback",
-    returnUrl:"https://your-return-url",
-    cancelUrl:"https://your-cancel-url",
     isPayIn: true,
     countryCode: Country.CI,
     customer: Customer(
@@ -50,7 +45,7 @@ Accept payment from mobile money
 
 Example
 ```dart
-import 'package:adjemin_gateway_sdk/adjemin_gateway_sdk.dart';
+import 'package:adjemin_gateway_sdk/payment_gateway_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -124,23 +119,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
           final String merchantTransId = uuid.v4().split('-').last;
           print("merchantTransId => $merchantTransId");
-          final String baseUrl = "https://api.adjem.in";
+          final String baseUrl = "https://api.donypay.com";
 
           final GatewayTransaction? result = await Navigator.push(context,
               MaterialPageRoute(builder: (context)=> OperatorPickerWidget(
                 baseUrl: baseUrl,
                 clientId: dotenv.env['CLIENT_ID']!,
                 clientSecret: dotenv.env['CLIENT_SECRET']!,
-                sellerUsername: dotenv.env['SELLER_USERNAME']!,
-                paymentType: 'gateway',
                 title: 'Payer une commande',
                 description: 'Paiement apport initial',
                 amount: 100,
                 currencyCode: "XOF",
                 merchantTransactionId: merchantTransId,
-                webhookUrl:"https://your-webhook-url/v1/customers/payments/callback",
-                returnUrl:"https://your-return-url",
-                cancelUrl:"https://your-cancel-url",
                 isPayIn: true,
                 countryCode: Country.CI,
                 customer: Customer(

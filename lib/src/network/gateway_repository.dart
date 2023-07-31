@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:adjemin_gateway_sdk/adjemin_gateway_sdk.dart';
-import 'package:adjemin_gateway_sdk/src/models/gateway_transaction.dart';
-import 'package:adjemin_gateway_sdk/src/network/gateway_credentials.dart';
-import 'package:adjemin_gateway_sdk/src/network/gateway_exception.dart';
+import 'package:payment_gateway_flutter/payment_gateway_flutter.dart';
+import 'package:payment_gateway_flutter/src/models/gateway_transaction.dart';
+import 'package:payment_gateway_flutter/src/network/gateway_credentials.dart';
+import 'package:payment_gateway_flutter/src/network/gateway_exception.dart';
 import 'package:http/http.dart';
 
 abstract class IGatewayRepository{
@@ -84,7 +84,7 @@ class GatewayRepository implements IGatewayRepository{
     final authCredential = await GatewayCredentials().getAccessToken(baseUrl: baseUrl, clientId: clientId, clientSecret: clientSecret);
 
 
-    final url = Uri.parse("$baseUrl/v3/gateway/merchants/payment/$merchantTransactionId");
+    final url = Uri.parse("$baseUrl/v1/gateway/payment/$merchantTransactionId");
 
     final response = await get(url,headers: {
       'Accept': 'application/json',
@@ -128,7 +128,7 @@ class GatewayRepository implements IGatewayRepository{
 
   @override
   Future<List<GatewayOperator>> findOperatorsByCountry(String baseUrl,String countryIso)async {
-   final url = Uri.parse("$baseUrl/v3/gateway/operators/$countryIso");
+   final url = Uri.parse("$baseUrl/v1/gateway/operators/$countryIso");
 
    final response = await get(url);
    if(response.statusCode == 200){
@@ -165,7 +165,7 @@ class GatewayRepository implements IGatewayRepository{
 
     final authCredential = await GatewayCredentials().getAccessToken(baseUrl: baseUrl, clientId: clientId, clientSecret: clientSecret);
 
-    final url = Uri.parse("$baseUrl/v3/gateway/merchants/make_payment");
+    final url = Uri.parse("$baseUrl/v1/gateway/make_payment");
 
     final response = await post(url,
     body: jsonEncode({
@@ -233,7 +233,7 @@ class GatewayRepository implements IGatewayRepository{
 
     final authCredential = await GatewayCredentials().getAccessToken(baseUrl: baseUrl, clientId: clientId, clientSecret: clientSecret);
 
-    final url = Uri.parse("$baseUrl/v3/gateway/merchants/make_transfer");
+    final url = Uri.parse("$baseUrl/v1/gateway/make_transfer");
 
     final response = await post(url,
         body: jsonEncode({
@@ -305,7 +305,7 @@ class GatewayRepository implements IGatewayRepository{
 
     final authCredential = await GatewayCredentials().getAccessToken(baseUrl: baseUrl, clientId: clientId, clientSecret: clientSecret);
 
-    final url = Uri.parse("$baseUrl/v3/gateway/merchants/create_payment");
+    final url = Uri.parse("$baseUrl/v1/gateway/create_payment");
 
     final response = await post(url,
         body: jsonEncode({

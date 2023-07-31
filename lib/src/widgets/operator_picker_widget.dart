@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:adjemin_gateway_sdk/adjemin_gateway_sdk.dart';
-import 'package:adjemin_gateway_sdk/src/models/customer.dart';
-import 'package:adjemin_gateway_sdk/src/models/gateway_transaction.dart';
-import 'package:adjemin_gateway_sdk/src/models/payment_event.dart';
-import 'package:adjemin_gateway_sdk/src/models/payment_state.dart';
-import 'package:adjemin_gateway_sdk/src/network/gateway_exception.dart';
-import 'package:adjemin_gateway_sdk/src/network/gateway_repository.dart';
+import 'package:payment_gateway_flutter/payment_gateway_flutter.dart';
+import 'package:payment_gateway_flutter/src/models/customer.dart';
+import 'package:payment_gateway_flutter/src/models/gateway_transaction.dart';
+import 'package:payment_gateway_flutter/src/models/payment_event.dart';
+import 'package:payment_gateway_flutter/src/models/payment_state.dart';
+import 'package:payment_gateway_flutter/src/network/gateway_exception.dart';
+import 'package:payment_gateway_flutter/src/network/gateway_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:url_launcher/url_launcher.dart';

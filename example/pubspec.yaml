@@ -36,7 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.4
   google_fonts: ^5.1.0
   uuid: ^3.0.7
-  adjemin_gateway_sdk:
+  payment_gateway_flutter:
     path: ../
   flutter_dotenv: ^5.0.2
 

@@ -1,4 +1,4 @@
-import 'package:adjemin_gateway_sdk/src/models/payment_state.dart';
+import 'package:payment_gateway_flutter/src/models/payment_state.dart';
 
 class PaymentEvent{
 

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:adjemin_gateway_sdk/src/models/access_token.dart';
-import 'package:adjemin_gateway_sdk/src/network/gateway_exception.dart';
-import 'package:adjemin_gateway_sdk/src/utils/jwt_decoder.dart';
+import 'package:payment_gateway_flutter/src/models/access_token.dart';
+import 'package:payment_gateway_flutter/src/network/gateway_exception.dart';
+import 'package:payment_gateway_flutter/src/utils/jwt_decoder.dart';
 import 'package:http/http.dart';
 
 abstract class IGatewayCredentials{
@@ -62,7 +62,7 @@ class GatewayCredentials implements IGatewayCredentials{
    required String clientId,
    required String clientSecret}) async{
 
-   final url = Uri.parse("$baseUrl/v3/oauth/token");
+   final url = Uri.parse("$baseUrl/v1/oauth/token");
 
    final response = await post(url,
        body: {

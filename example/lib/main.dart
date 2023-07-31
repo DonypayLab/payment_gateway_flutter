@@ -1,4 +1,4 @@
-import 'package:adjemin_gateway_sdk/adjemin_gateway_sdk.dart';
+import 'package:payment_gateway_flutter/payment_gateway_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';

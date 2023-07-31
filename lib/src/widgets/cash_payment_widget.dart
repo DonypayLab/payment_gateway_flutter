@@ -1,6 +1,6 @@
-import 'package:adjemin_gateway_sdk/src/models/customer.dart';
-import 'package:adjemin_gateway_sdk/src/models/gateway_operator.dart';
-import 'package:adjemin_gateway_sdk/src/network/gateway_repository.dart';
+import 'package:payment_gateway_flutter/src/models/customer.dart';
+import 'package:payment_gateway_flutter/src/models/gateway_operator.dart';
+import 'package:payment_gateway_flutter/src/network/gateway_repository.dart';
 import 'package:flutter/material.dart';
 
 import 'custom_progress_widget.dart';

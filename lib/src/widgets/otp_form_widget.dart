@@ -1,4 +1,4 @@
-import 'package:adjemin_gateway_sdk/adjemin_gateway_sdk.dart';
+import 'package:payment_gateway_flutter/payment_gateway_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_text_field.dart';
 import 'package:otp_text_field/style.dart';
