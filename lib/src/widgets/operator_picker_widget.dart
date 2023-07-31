@@ -29,31 +29,20 @@ class OperatorPickerWidget extends StatefulWidget {
   final String currencyCode;
   final String? description;
   final String merchantTransactionId;
-  final String webhookUrl;
-  final String? returnUrl;
-  final String? cancelUrl;
   final String baseUrl;
   final String clientId;
   final String clientSecret;
-  final String sellerUsername;
-  final String paymentType;
 
   const OperatorPickerWidget({
     required this.baseUrl,
     required this.clientId,
     required this.clientSecret,
-    required this.sellerUsername,
-    required this.paymentType,
     required this.countryCode,
     required this.isPayIn,
     required this.title,
     required this.amount,
     required this.currencyCode,
     required this.merchantTransactionId,
-    required this.webhookUrl,
-
-    this.returnUrl,
-    this.cancelUrl,
     this.description,
     this.customer
   });
@@ -319,12 +308,7 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
         amount: widget.amount,
         currencyCode: widget.currencyCode,
         merchantTransId: widget.merchantTransactionId,
-        sellerUsername: widget.sellerUsername,
-        paymentType: widget.paymentType,
         designation: widget.description??"Paiement de facture",
-        webhookUrl: widget.webhookUrl,
-        returnUrl: widget.returnUrl,
-        cancelUrl: widget.cancelUrl,
         customerEmail: widget.customer?.email,
         customerFirstname: widget.customer?.firstName,
         customerLastname: widget.customer?.lastName,
@@ -380,9 +364,6 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
         designation:widget.description??"Paiement de facture",
         gatewayOperatorCode: gatewayOperator.payinCode!,
         merchantTransId: widget.merchantTransactionId,
-        webhookUrl: widget.webhookUrl,
-        returnUrl: widget.returnUrl,
-        cancelUrl: widget.cancelUrl,
         customerRecipientNumber: customer.phoneNumber!,
         customerEmail: customer.email,
         customerFirstname: customer.firstName,

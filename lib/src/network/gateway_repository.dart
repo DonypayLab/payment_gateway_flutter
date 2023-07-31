@@ -17,12 +17,7 @@ abstract class IGatewayRepository{
     required int amount,
     required String currencyCode,
     required String merchantTransId,
-    required String sellerUsername,
-    required String paymentType,
     required String designation,
-    required String webhookUrl,
-    String? returnUrl,
-    String? cancelUrl,
     String? customerRecipientNumber,
     String? customerEmail,
     String? customerFirstname,
@@ -37,9 +32,6 @@ abstract class IGatewayRepository{
     required String designation,
     required String gatewayOperatorCode,
     required String merchantTransId,
-    required String webhookUrl,
-    String? returnUrl,
-    String? cancelUrl,
     required String customerRecipientNumber,
     String? customerEmail,
     String? customerFirstname,
@@ -53,7 +45,6 @@ abstract class IGatewayRepository{
     required int amount,
     required String gatewayOperatorCode,
     required String merchantTransId,
-    required String webhookUrl,
     required String customerRecipientNumber,
     String? customerEmail,
     String? customerFirstname,
@@ -154,9 +145,6 @@ class GatewayRepository implements IGatewayRepository{
     required String designation,
     required String gatewayOperatorCode,
     required String merchantTransId,
-    required String webhookUrl,
-    String? returnUrl,
-    String? cancelUrl,
     required String customerRecipientNumber,
     String? customerEmail,
     String? customerFirstname,
@@ -177,10 +165,7 @@ class GatewayRepository implements IGatewayRepository{
       "customer_email":customerEmail,
       "customer_firstname":customerFirstname,
       "customer_lastname":customerLastname,
-      "otp":otp,
-      "webhook_url":webhookUrl,
-      "return_url":returnUrl,
-      "cancel_url":cancelUrl
+      "otp":otp
     }),
       headers: {
         'Content-Type': 'application/json',
@@ -229,7 +214,7 @@ class GatewayRepository implements IGatewayRepository{
     required String baseUrl,
     required String clientId,
     required String clientSecret,
-    required int amount, required String gatewayOperatorCode, required String merchantTransId,required String webhookUrl, required String customerRecipientNumber, String? customerEmail, String? customerFirstname, String? customerLastname})async {
+    required int amount, required String gatewayOperatorCode, required String merchantTransId, required String customerRecipientNumber, String? customerEmail, String? customerFirstname, String? customerLastname})async {
 
     final authCredential = await GatewayCredentials().getAccessToken(baseUrl: baseUrl, clientId: clientId, clientSecret: clientSecret);
 
@@ -244,7 +229,6 @@ class GatewayRepository implements IGatewayRepository{
           "customer_email":customerEmail,
           "customer_firstname":customerFirstname,
           "customer_lastname":customerLastname,
-          "webhook_url":webhookUrl
         }),
         headers: {
           'Content-Type': 'application/json',
@@ -292,12 +276,7 @@ class GatewayRepository implements IGatewayRepository{
     required int amount,
     required String currencyCode,
     required String merchantTransId,
-    required String sellerUsername,
-    required String paymentType,
     required String designation,
-    required String webhookUrl,
-    String? returnUrl,
-    String? cancelUrl,
     String? customerRecipientNumber,
     String? customerEmail,
     String? customerFirstname,
@@ -312,16 +291,11 @@ class GatewayRepository implements IGatewayRepository{
           "amount":amount,
           "currency_code":currencyCode,
           "merchant_trans_id":merchantTransId,
-          "seller_username":sellerUsername,
-          "payment_type":paymentType,
           "designation":designation,
           "customer_recipient_number":customerRecipientNumber,
           "customer_email":customerEmail,
           "customer_firstname":customerFirstname,
-          "customer_lastname":customerLastname,
-          "webhook_url":webhookUrl,
-          "return_url":returnUrl,
-          "cancel_url":cancelUrl
+          "customer_lastname":customerLastname
         }),
         headers: {
           'Content-Type': 'application/json',
