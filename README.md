@@ -45,7 +45,7 @@ Accept payment from mobile money
 
 Example
 ```dart
-import 'package:adjemin_gateway_sdk/payment_gateway_flutter.dart';
+import 'package:payment_gateway_flutter/payment_gateway_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_fonts/google_fonts.dart';
