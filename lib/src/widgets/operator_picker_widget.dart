@@ -155,7 +155,7 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
             GestureDetector(
               onTap: (){
 
-                displayPrompt(context, "Êtes-vous sûr de faire cela?", "Voulez vous confirmer que vous quittez sans finaliser le paiement ?",(){
+                displayPrompt(context, "Êtes-vous sûr de faire cela?", "Voulez vous confirmer que vous quittez sans finaliser le paiement?",(){
                   Navigator.of(context).pop();
                 },(){} );
 
@@ -227,7 +227,7 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
             alignment: Alignment.topLeft,
             padding: const EdgeInsets.all(8.0),
             child: Text("Sélectionnez un moyen de paiement",
-            style: Theme.of(context).textTheme.subtitle1,
+            style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
           Column(
@@ -402,7 +402,7 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
 
         }
 
-        //TODO carte bancaire
+        //carte bancaire
         if(gatewayOperator.name!.toLowerCase().contains('carte')){
 
           _runTransactionChecker(gatewayOperator, widget.merchantTransactionId);
@@ -507,14 +507,14 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
             ),
             const SizedBox(height: 10,),
             Text("${_paymentOperatorSelected!.name!}",
-            style: Theme.of(context).textTheme.headline6,),
+            style: Theme.of(context).textTheme.titleLarge,),
             const SizedBox(height: 20,),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               alignment: Alignment.center,
               child: Text(getLoadingMessage(widget.isPayIn,_paymentOperatorSelected!, _isWaitingAcceptation),
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontSize: 16
                 ),),
             ),
@@ -682,8 +682,6 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
     }
 
 
-
-
   }
 
   _runTransactionChecker(GatewayOperator operator, String transactionId){
@@ -731,11 +729,16 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
          }
 
        }).catchError((onError){
-          paymentStreamController.add(PaymentEvent(
-              currentState: PaymentState.COMPLETED,
-              success: false,
-              data: onError
-          ));
+         if(onError is SocketException){
+
+         }else{
+           paymentStreamController.add(PaymentEvent(
+               currentState: PaymentState.COMPLETED,
+               success: false,
+               data: onError
+           ));
+         }
+
 
     });
 
@@ -845,7 +848,7 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
   }
 
    _openPaymentUrl(String paymentUrl) async{
-     await launch(paymentUrl);
+     await launchUrl(Uri.parse(paymentUrl));
   }
 
 }

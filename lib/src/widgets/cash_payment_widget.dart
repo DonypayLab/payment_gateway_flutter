@@ -34,18 +34,18 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
     return Scaffold(
       backgroundColor: Colors.white ,
       appBar: AppBar(
-        title: Text(widget.description??"Effectuer une transaction", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),),
+        title: Text(widget.description??"Effectuer une transaction", style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),),
         actions: [
           GestureDetector(
             onTap: (){
               Navigator.of(context).pop(false);
             },
-            child: Icon(Icons.close,size: 30,),
+            child: const Icon(Icons.close,size: 30,),
           ),
-          SizedBox(width: 20,)
+          const SizedBox(width: 20,)
         ],
       ),
-      body: _isLoading? CustomProgressWidget():
+      body: _isLoading? const CustomProgressWidget():
       _buildBody(),
     );
   }
@@ -72,18 +72,18 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
       child: Column(
         children: [
 
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           _buildCartUi(),
           _buildCustomerItemUi(widget.customer),
 
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
 
           _buildPayWithUi(),
 
           Container(
             width: MediaQuery.of(context).size.width,
             height: 50,
-            margin: EdgeInsets.all(16.0),
+            margin: const EdgeInsets.all(16.0),
             child: ElevatedButton(
               onPressed: (){
                   Navigator.of(context).pop(true);
@@ -95,21 +95,21 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
                       fontSize: 19
                   ))
               ),
-              child:Text("Payer",) ,
+              child:const Text("Payer",) ,
             ),
           ),
 
           widget.operator.name!.toLowerCase().contains('carte')?const SizedBox():Container(
             width: MediaQuery.of(context).size.width,
             alignment: Alignment.center,
-            margin: EdgeInsets.symmetric(horizontal: 16.0),
+            margin: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Text("L'étape suivante déclenchera une demande de validation par USSD de l'opérateur ${widget.operator.name}",
               style: Theme.of(context).textTheme.caption?.copyWith(
                   color: Colors.black
               ),
             ),
           ),
-          SizedBox(height: 20,),
+          const SizedBox(height: 20,),
 
 
 
@@ -123,7 +123,7 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
     return Container(
       color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
       padding: const EdgeInsets.all( 8.0),
-      margin: EdgeInsets.only(left: 16.0, right: 16.0, top: 8.0, bottom: 8.0),
+      margin: const EdgeInsets.only(left: 16.0, right: 16.0, top: 8.0, bottom: 8.0),
       child: Row(
         children: [
           CircleAvatar(
@@ -132,7 +132,7 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
             customer.photoUrl!: "https://i.imgur.com/vQBp4EF.png"),
             radius: 30.0,
           ),
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           Expanded(
             child:  Column(
               children: [
@@ -150,7 +150,7 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
             ),
           ),
 
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
 
 
         ],
@@ -161,14 +161,14 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
   _buildCartUi() {
 
     return Padding(
-      padding: EdgeInsets.only(left: 16.0, right: 16.0),
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Container(
-            child: Icon(Icons.shopping_cart_outlined, size: 25,),
+            child: const Icon(Icons.shopping_cart_outlined, size: 25,),
           ),
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           Container(
             height: 50,
             alignment: Alignment.center,
@@ -187,7 +187,7 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
 
   Widget _buildPayWithUi() {
     return Padding(
-      padding: EdgeInsets.only(left: 16.0, right: 16.0),
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0),
       child: Column(
         children: [
           Container(
@@ -198,19 +198,19 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
             ),
             ),
           ),
-          SizedBox(height: 20.0,),
+          const SizedBox(height: 20.0,),
 
           Row(
             children: [
               Image.network(widget.operator.image!, width: 60,),
-              SizedBox(width: 10.0,),
+              const SizedBox(width: 10.0,),
               Expanded(
                 child: Column(
                     children: [
                       Container(
                         alignment: Alignment.topLeft,
                         child: Text("${widget.operator.name}",
-                          style: Theme.of(context).textTheme.headline6,),
+                          style: Theme.of(context).textTheme.titleLarge,),
                       ),
                       widget.operator.name!.toLowerCase().contains('carte')?const SizedBox():Container(
                         alignment: Alignment.topLeft,
@@ -224,7 +224,7 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
                       Container(
                         alignment: Alignment.topLeft,
                         child: Text("Ce numéro de téléphone sera débité du montant à payer",
-                          style: Theme.of(context).textTheme.caption?.copyWith(
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Colors.grey[500]
                           ),
                         ),
@@ -236,7 +236,7 @@ class _CashPaymentWidgetState extends State<CashPaymentWidget> {
             ],
           ),
 
-          SizedBox(height: 20.0,)
+          const SizedBox(height: 20.0,)
 
         ],
       ),
