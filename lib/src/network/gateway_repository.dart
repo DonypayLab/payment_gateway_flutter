@@ -119,7 +119,8 @@ class GatewayRepository implements IGatewayRepository{
 
   @override
   Future<List<GatewayOperator>> findOperatorsByCountry(String baseUrl,String countryIso)async {
-   final url = Uri.parse("$baseUrl/v1/gateway/operators/$countryIso");
+
+    final url = Uri.parse("$baseUrl/v1/gateway/operators/$countryIso");
 
    final response = await get(url);
    if(response.statusCode == 200){
@@ -127,7 +128,8 @@ class GatewayRepository implements IGatewayRepository{
      final bool success = json['success'];
      if(success){
        final List list = json['data'];
-       return list.map((e) => GatewayOperator.fromJson(e as Map<String, dynamic>)).toList();
+       final data = list.map((e) => GatewayOperator.fromJson(e as Map<String, dynamic>)).toList();
+       return data;
      }else{
        throw response;
      }

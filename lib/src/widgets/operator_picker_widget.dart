@@ -186,7 +186,9 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
           if(mounted){
             setState(() {
               elements = value.where((element) => element.isActivePayin == true).toList();
+              elements.sort((a,b)=>a.id!.compareTo(b.id!));
               _paymentOperatorSelected = elements[1];
+
             });
           }
 
@@ -316,8 +318,7 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
     ).then((value){
 
 
-    })
-        .catchError((onError){
+    }).catchError((onError){
 
       print("Error $onError");
 
@@ -698,14 +699,11 @@ class _OperatorPickerWidgetState extends State<OperatorPickerWidget> {
       showPaymentLoader(operator);
     }
 
-    GatewayRepository()
-        .checkPaymentStatus(
-      baseUrl:widget.baseUrl,
-      merchantTransactionId:transactionId,
-      clientId: widget.clientId,
-      clientSecret: widget.clientSecret
-    )
-        .then((value){
+    GatewayRepository().checkPaymentStatus(
+        baseUrl:widget.baseUrl,
+        merchantTransactionId:transactionId,
+        clientId: widget.clientId,
+        clientSecret: widget.clientSecret).then((value){
 
          if(value.status == GatewayTransaction.SUCCESSFUL){
 

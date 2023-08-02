@@ -1,6 +1,6 @@
 name: payment_gateway_flutter
 description: Gateway sdk to allow payment and transfer in Donypay app
-version: 1.12.1
+version: 1.12.2
 homepage: https://gitlab.com/adjeminplateform/adjemin_gateway_sdk
 
 environment:

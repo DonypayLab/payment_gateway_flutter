@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           final String merchantTransId = uuid.v4().split('-').last;
           print("merchantTransId => $merchantTransId");
-          final String baseUrl = "https://api.adjem.in";
+          final String baseUrl = "https://api.donypay.com";
 
           final GatewayTransaction? result = await Navigator.push(context,
               MaterialPageRoute(builder: (context)=> OperatorPickerWidget(
